@@ -1,0 +1,18 @@
+.blog__button-like {
+  background-image: url(../../../images/btn-like.svg);
+  width: 22px;
+  height: 19px;
+  border: none;
+  background-color: transparent;
+  transition: opacity 1s ease;
+  cursor: pointer;
+}
+
+.blog__button-like:hover {
+  opacity: 0.5;
+}
+
+.blog__button-like_active {
+  opacity: 1;
+  background-image: url(../../../images/btn-like-black.svg);
+}

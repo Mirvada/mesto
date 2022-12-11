@@ -1,0 +1,10 @@
+.profile__button {
+  align-self: center;
+  margin: 0 0 0 auto;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__button {
+    margin: 0 auto 0 auto;
+  }
+}

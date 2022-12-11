@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+
+  <link rel="stylesheet" href="./page/index.css">
+</head>
+
+<body class="page">
+
+  <header class="header">
+    <div class="logo"></div>
+  </header>
+
+  <main>
+
+    <section class="profile">
+      <div class="profile__avatar"></div>
+      <div class="profile__info">
+        <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+        <button class="profile__button-edit" type="button"></button>
+        <p class="profile__user-profession">Исследователь океана</p>
+      </div>
+      <div class="profile__button">
+        <button class="profile__button-add"></button>
+      </div>
+    </section>
+
+    <section class="blog">
+      <article class="blog__post">
+        <img src="./images/photo/mandarins.jpg" alt="" class="blog__pic">
+        <div class="blog__caption">
+          <p class="blog__text">К новому году готовы!</p>
+          <div class="blog__button">
+            <button class="blog__button-like"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog__post">
+        <img src="./images/photo/journey.jpg" alt="" class="blog__pic">
+        <div class="blog__caption">
+          <p class="blog__text">Отдыхаем</p>
+          <div class="blog__button">
+            <button class="blog__button-like"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog__post">
+        <img src="./images/photo/car.jpg" alt="" class="blog__pic">
+        <div class="blog__caption">
+          <p class="blog__text">Вдали от города</p>
+          <div class="blog__button">
+            <button class="blog__button-like"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog__post">
+        <img src="./images/photo/corals.jpg" alt="" class="blog__pic">
+        <div class="blog__caption">
+          <p class="blog__text">Кораллы</p>
+          <div class="blog__button">
+            <button class="blog__button-like"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog__post">
+        <img src="./images/photo/jellyfish.jpg" alt="" class="blog__pic">
+        <div class="blog__caption">
+          <p class="blog__text">Медузы</p>
+          <div class="blog__button">
+            <button class="blog__button-like"></button>
+          </div>
+        </div>
+      </article>
+
+      <article class="blog__post">
+        <img src="./images/photo/fish.jpg" alt="" class="blog__pic">
+        <div class="blog__caption">
+          <p class="blog__text">Рыбки</p>
+          <div class="blog__button">
+            <button class="blog__button-like"></button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+
+  <div class="popup">
+    <div class="popup__contrainer">
+      <form class="popup__form-edit">
+        <button class="popup__button-close" type="button"></button>
+        <fieldset class="popup__form">
+          <h2 class="popup__title">Редактирование профиля</h2>
+          <input class="popup__user-name" type="text" value="Жак-Ив Кусто">
+          <input class="popup__user-profession" type="text" value="Исследователь океана">
+          <button class="popup__button" type="submit">Сохранить</button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
