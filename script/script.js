@@ -11,7 +11,7 @@ let userJob = document.querySelector('.profile__user-profession');
 function formResetProfile() {
     nameInput.value = userName.textContent;
     jobInput.value = userJob.textContent;
-}
+};
 
 function formOpenClose(open, close) {
     open.addEventListener('click', function (event) {
@@ -42,4 +42,3 @@ formElement.addEventListener('keydown', function (event) {
 
 formElement.addEventListener('submit', formSubmitHandler);
 formOpenClose(btnEdit, btnClose);
-
