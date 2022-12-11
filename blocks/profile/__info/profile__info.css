@@ -2,7 +2,6 @@
   max-width: 336px;
   align-self: center;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min-content max-content));
   grid-template-areas: "user-name button"
     "user-profession user-profession";
   gap: 16px 18px;
