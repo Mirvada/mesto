@@ -6,7 +6,7 @@
   background-position: center;
   background-color: transparent;
   border: 1px solid #FFFFFF;
-  margin: 15px 0 0 0;
+  margin-top: 15px;
   transition: opacity 1s ease;
   cursor: pointer;
   grid-area: button;
@@ -18,9 +18,9 @@
 
 @media screen and (max-width: 700px) {
   .profile__button-edit {
-    background-image: url(../../../images/btn-edit-small.svg);
+    margin-top: 8px;
     width: 18px;
     height: 18px;
-    margin: 8px 0 0 0;
+    background-size: 7.5px;
   }
 }
