@@ -9,6 +9,11 @@
     color: #fff;
     background-color: #000;
     border-radius: 2px;
+    cursor: pointer;
+}
+
+.popup__button-add:hover {
+    opacity: 0.8;
 }
 
 @media screen and (max-width: 621px) {
