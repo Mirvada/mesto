@@ -11,8 +11,3 @@
 .blog__button-like:hover {
   opacity: 0.5;
 }
-
-.blog__button-like_active {
-  opacity: 1;
-  background-image: url(../../../images/btn-like-black.svg);
-}
