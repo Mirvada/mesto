@@ -21,6 +21,7 @@
 @import url(../blocks/blog/__caption/blog__caption.css);
 @import url(../blocks/blog/__text/blog__text.css);
 @import url(../blocks/blog/__button-like/blog__button-like.css);
+@import url(../blocks/blog/__button-like/_active/blog__button-like_active.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

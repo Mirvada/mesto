@@ -18,7 +18,6 @@ function openForm() {
 
 function closeForm() {
   popup.classList.remove('popup_opened');
-  formResetProfile();
 };
 
 btnEdit.addEventListener('click', openForm);
