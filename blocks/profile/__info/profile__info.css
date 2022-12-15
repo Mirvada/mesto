@@ -1,5 +1,5 @@
 .profile__info {
-  max-width: 336px;
+  max-width: 350px;
   align-self: center;
   display: grid;
   grid-template-areas: "user-name button"
