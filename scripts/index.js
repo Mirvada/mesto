@@ -14,6 +14,7 @@ function formResetProfile() {
 
 function openForm() {
   popup.classList.add('popup_opened');
+  formResetProfile();
 };
 
 function closeForm() {
