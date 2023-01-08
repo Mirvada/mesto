@@ -17,63 +17,17 @@
   <main>
 
     <section class="profile" aria-label="секция с профилем">
-      <div class="profile__avatar"></div>
+      <img class="profile__avatar" src="./images/profile-avatar.jpg"></img>
       <div class="profile__info">
-        <h1 class="profile__user-name">Жак-Ив Кусто</h1>
+        <h1 class="profile__nickname">Жак-Ив Кусто</h1>
         <button class="profile__button-edit" type="button" aria-label="редактировать"></button>
-        <p class="profile__user-profession">Исследователь океана</p>
+        <p class="profile__user-info">Исследователь океана</p>
       </div>
       <button class="profile__button-add" type="button" aria-label="добавить"></button>
     </section>
 
-    <section class="blogs" aria-label="секция блога">
-      <article class="blog" aria-label="карточка блога">
-        <img src="./images/photo/mandarins.jpg" alt="корзина с мандаринами" class="blog__pic">
-        <div class="blog__caption">
-          <h2 class="blog__text">К новому году готовы!</h2>
-          <button class="blog__button-like" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
+    <section class="cards" aria-label="секция блога">
 
-      <article class="blog" aria-label="карточка блога">
-        <img src="./images/photo/journey.jpg" alt="собака в лодке на фоне гор" class="blog__pic">
-        <div class="blog__caption">
-          <h2 class="blog__text">Отдыхаем</h2>
-          <button class="blog__button-like" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-
-      <article class="blog" aria-label="карточка блога">
-        <img src="./images/photo/car.jpg" alt="дом на колесах под звездным небом" class="blog__pic">
-        <div class="blog__caption">
-          <h2 class="blog__text">Вдали от города</h2>
-          <button class="blog__button-like" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-
-      <article class="blog" aria-label="карточка блога">
-        <img src="./images/photo/corals.jpg" alt="кораллы и морская фауна" class="blog__pic">
-        <div class="blog__caption">
-          <h2 class="blog__text">Кораллы</h2>
-          <button class="blog__button-like" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-
-      <article class="blog" aria-label="карточка блога">
-        <img src="./images/photo/jellyfish.jpg" alt="разноцветные медузы" class="blog__pic">
-        <div class="blog__caption">
-          <h2 class="blog__text">Медузы</h2>
-          <button class="blog__button-like" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
-
-      <article class="blog" aria-label="карточка блога">
-        <img src="./images/photo/fish.jpg" alt="кораллы и рыбы" class="blog__pic">
-        <div class="blog__caption">
-          <h2 class="blog__text">Рыбки</h2>
-          <button class="blog__button-like" type="button" aria-label="нравится"></button>
-        </div>
-      </article>
     </section>
 
   </main>
@@ -82,17 +36,50 @@
     <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
   </footer>
 
-  <div class="popup">
-    <div class="popup__contrainer">
+  <div class="popup popup_edit">
+    <div class="popup__container">
       <button class="popup__button-close" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form-edit" name="form-edit">
-        <input class="popup__input popup__input_user_name" type="text" value="Жак-Ив Кусто" name="user-name">
-        <input class="popup__input popup__input_user_job" type="text" value="Исследователь океана" name="user-job">
+      <form class="popup__form popup__form_edit" name="form-edit">
+        <input class="popup__input popup__input_nickname" type="text" value="Жак-Ив Кусто" name="nickname">
+        <input class="popup__input popup__input_info" type="text" value="Исследователь океана" name="info">
         <button class="popup__button-save" type="submit">Сохранить</button>
       </form>
     </div>
   </div>
+
+  <div class="popup popup_add">
+    <div class="popup__container">
+      <button class="popup__button-close" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form_add" name="form-add">
+        <input class="popup__input popup__input_photo-title" type="text" value="" placeholder="Название" name="photo-title">
+        <input class="popup__input popup__input_photo-link" type="link" value="" placeholder="Ссылка на картинку" name="photo-link">
+        <button class="popup__button-save" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="popup popup_viewer">
+    <div class="popup__viewer-container">
+      <button class="popup__button-close" type="button"></button>
+      <img src="" alt="" class="popup__viewer-img">
+      <h2 class="popup__viewer-title"></h2>
+    </div>
+  </div>
+
+  <template id="card-template">
+    <div class="card">
+      <button class="card__button-trash" type="button" aria-lebel="удалить"></button>
+      <button class="card__button-open-img">
+        <img src="" alt="" class="card__img">
+      </button>
+      <div class="card__caption">
+        <h2 class="card__text"></h2>
+        <button class="card__button-like" type="button" aria-label="нравится"></button>
+      </div>
+    </div>
+  </template>
 
   <script src="./scripts/index.js"></script>
 </body>

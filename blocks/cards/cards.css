@@ -1,0 +1,15 @@
+.cards {
+  max-width: 880px;
+  margin: 0 auto 66px auto;
+  padding: 0 19px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 282px);
+  gap: 20px 17px;
+  justify-content: center;
+}
+
+@media screen and (max-width: 621px) {
+  .blogs {
+    margin: 0 auto 48px auto;
+  }
+}
