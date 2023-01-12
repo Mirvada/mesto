@@ -18,7 +18,6 @@
 
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__button-trash/card__button-trash.css);
-@import url(../blocks/card/__button-open-img/card__button-open-img.css);
 @import url(../blocks/card/__img/card__img.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);

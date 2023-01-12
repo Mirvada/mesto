@@ -4,7 +4,6 @@ const popupAddForm = document.querySelector('.popup_add');
 const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonClose = document.querySelectorAll('.popup__button-close');
 const buttonAdd = document.querySelector('.profile__button-add');
-const buttonOpenedImg = document.querySelector('.card__button-open-img');
 
 const nameInput = document.querySelector('.popup__input_nickname');
 const infoInput = document.querySelector('.popup__input_info');
@@ -19,12 +18,12 @@ function openingForm(formOpen) {
   formOpen.classList.add('popup_opened');
 };
 
-buttonEdit.addEventListener('click', function() {
+buttonEdit.addEventListener('click', function () {
   openingForm(popupEditForm);
   resetFormEdit();
 });
 
-buttonAdd.addEventListener('click', function() {
+buttonAdd.addEventListener('click', function () {
   openingForm(popupAddForm);
   resetFormAdd();
 });
@@ -35,7 +34,7 @@ function closeForm(button) {
   button.closest('.popup').classList.remove('popup_opened');
 }
 
-buttonClose.forEach(function(button) {
+buttonClose.forEach(function (button) {
   button.addEventListener('click', () => closeForm(button));
 });
 
@@ -51,7 +50,7 @@ function resetFormEdit() {
 function handleFormSubmit(evt) {
   evt.preventDefault();
 
-  nameProfile.textContent  = nameInput.value;
+  nameProfile.textContent = nameInput.value;
   infoProfile.textContent = infoInput.value;
 
   closeForm(evt.target);
@@ -60,33 +59,6 @@ function handleFormSubmit(evt) {
 formElement.addEventListener('submit', handleFormSubmit);
 
 // Проектная работа №5
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const cardList = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card-template').content;
@@ -97,7 +69,6 @@ function createCard(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardText = cardElement.querySelector('.card__text');
   const cardImg = cardElement.querySelector('.card__img');
-  const buttonOpenedImg = cardElement.querySelector('.card__button-open-img');
 
   // Создание карточки
 
@@ -107,20 +78,20 @@ function createCard(name, link) {
 
   // Лайки
 
-  cardElement.querySelector('.card__button-like').addEventListener('click', function(evt) {
+  cardElement.querySelector('.card__button-like').addEventListener('click', function (evt) {
     evt.target.classList.toggle('card__button-like_active');
   });
 
   // Закрытие формы
 
-  cardElement.querySelector('.card__button-trash').addEventListener('click', function(button) {
+  cardElement.querySelector('.card__button-trash').addEventListener('click', function (button) {
     let card = button.target.closest('.card');
     card.remove();
   });
 
-  // Открытие картинки
+  // // Открытие картинки
 
-  buttonOpenedImg.addEventListener('click', function() {
+  cardImg.addEventListener('click', function () {
     openingForm(popupViewerForm);
     document.querySelector('.popup__viewer-title').textContent = name;
     document.querySelector('.popup__viewer-img').src = link;
@@ -139,7 +110,7 @@ function resetFormAdd() {
 // Добавление карточки из массива
 
 function addArr(card) {
-  const cardArr = initialCards.map(function(card) {
+  const cardArr = initialCards.map(function (card) {
     return createCard(card.name, card.link);
   });
   cardList.prepend(...cardArr);
