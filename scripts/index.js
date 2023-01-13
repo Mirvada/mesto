@@ -30,13 +30,16 @@ buttonAdd.addEventListener('click', function () {
 
 // Закрытие формы
 
-function closeForm(button) {
-  button.closest('.popup').classList.remove('popup_opened');
-}
+function closingForm(formClose) {
+  formClose.classList.remove('popup_opened');
+};
 
 buttonClose.forEach(function (button) {
-  button.addEventListener('click', () => closeForm(button));
-});
+  button.addEventListener('click', function (formClose) {
+    formClose = button.closest('.popup')
+    closingForm(formClose);
+  })
+})
 
 // Сброс формы редактирования
 
@@ -53,7 +56,7 @@ function handleFormSubmit(evt) {
   nameProfile.textContent = nameInput.value;
   infoProfile.textContent = infoInput.value;
 
-  closeForm(evt.target);
+  closingForm(popupEditForm);
 }
 
 formElement.addEventListener('submit', handleFormSubmit);
@@ -97,6 +100,8 @@ function createCard(name, link) {
     document.querySelector('.popup__viewer-img').src = link;
     document.querySelector('.popup__viewer-img').alt = name;
   });
+
+  closingForm(popupAddForm);
 
   return cardElement;
 };
