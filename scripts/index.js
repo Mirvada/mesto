@@ -69,9 +69,10 @@ const formAdd = document.querySelector('.popup__form_add');
 const popupViewerForm = document.querySelector('.popup_viewer');
 
 function createCard(name, link) {
-  const cardElement = cardTemplate.cloneNode(true);
+  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardText = cardElement.querySelector('.card__text');
   const cardImg = cardElement.querySelector('.card__img');
+  const buttonDelete = cardElement.querySelector('.card__button-trash');
 
   // Создание карточки
 
@@ -85,11 +86,10 @@ function createCard(name, link) {
     evt.target.classList.toggle('card__button-like_active');
   });
 
-  // Закрытие формы
+  // Удаление карточки
 
-  cardElement.querySelector('.card__button-trash').addEventListener('click', function (button) {
-    let card = button.target.closest('.card');
-    card.remove();
+  buttonDelete.addEventListener('click', function () {
+    cardElement.remove();
   });
 
   // // Открытие картинки
