@@ -65,10 +65,13 @@ formElement.addEventListener('submit', handleFormSubmit);
 
 const cardList = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#card-template').content;
+
 const formAdd = document.querySelector('.popup__form_add');
+
 const popupViewerForm = document.querySelector('.popup_viewer');
 const viewerTitle = popupViewerForm.querySelector('.popup__viewer-title');
 const viewerImg = popupViewerForm.querySelector('.popup__viewer-img');
+
 const nameCardInput = document.querySelector('.popup__input_photo-title').value;
 const linkCardInput = document.querySelector('.popup__input_photo-link').value;
 
