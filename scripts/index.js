@@ -5,8 +5,8 @@ const buttonEdit = document.querySelector('.profile__button-edit');
 const buttonClose = document.querySelectorAll('.popup__button-close');
 const buttonAdd = document.querySelector('.profile__button-add');
 
-const nameInput = document.querySelector('.popup__input_nickname');
-const infoInput = document.querySelector('.popup__input_info');
+const nameInput = document.querySelector('.popup__input_type_name');
+const infoInput = document.querySelector('.popup__input_type_info');
 const nameProfile = document.querySelector('.profile__nickname');
 const infoProfile = document.querySelector('.profile__user-info');
 
@@ -72,8 +72,8 @@ const popupViewerForm = document.querySelector('.popup_viewer');
 const viewerTitle = popupViewerForm.querySelector('.popup__viewer-title');
 const viewerImg = popupViewerForm.querySelector('.popup__viewer-img');
 
-const nameCardInput = document.querySelector('.popup__input_photo-title').value;
-const linkCardInput = document.querySelector('.popup__input_photo-link').value;
+const nameCardInput = document.querySelector('.popup__input_type_title').value;
+const linkCardInput = document.querySelector('.popup__input_type_link').value;
 
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
