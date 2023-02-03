@@ -39,3 +39,7 @@
 @import url(../blocks/popup/__viewer-container/__viewer-container.css);
 @import url(../blocks/popup/__viewer-img/popup__viewer-img.css);
 @import url(../blocks/popup/__viewer-title/popup__viewer-title.css);
+@import url(../blocks/popup/__input/_type/popup__input_type_error.css);
+@import url(../blocks/popup/__error/popup__error.css);
+@import url(../blocks/popup/__error/_visible/popup__error_visible.css);
+@import url(../blocks/popup/__button-save/_disabled/popup__button-save_disabled.css);
