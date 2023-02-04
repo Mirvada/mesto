@@ -45,6 +45,7 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form popup__form_edit" name="form-edit" novalidate>
           <input
+            id="edit-input"
             class="popup__input popup__input_type_name"
             type="text"
             value="Жак-Ив Кусто"
@@ -52,8 +53,9 @@
             minlength="2"
             maxlength="40"
             required>
-          <span class="popup__error"></span>
+          <span class="popup__error edit-input-error"></span>
           <input
+            id="info-input"
             class="popup__input popup__input_type_info"
             type="text"
             value="Исследователь океана"
@@ -61,7 +63,7 @@
             minlength="2"
             maxlength="200"
             required>
-          <span class="popup__error"></span>
+          <span class="popup__error info-input-error"></span>
           <button class="popup__button-save" type="submit">Сохранить</button>
         </form>
       </div>
@@ -74,6 +76,7 @@
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form popup__form_add" name="form-add" novalidate>
           <input
+            id="title-input"
             class="popup__input popup__input_type_title"
             type="text"
             value=""
@@ -82,15 +85,16 @@
             minlength="2"
             maxlength="30"
             required>
-          <span class="popup__error"></span>
+          <span class="popup__error title-input-error"></span>
           <input
+            id="link-input"
             class="popup__input popup__input_type_link"
             type="url"
             value=""
             placeholder="Ссылка на картинку"
             name="link"
             required>
-          <span class="popup__error"></span>
+          <span class="popup__error link-input-error"></span>
           <button class="popup__button-save" type="submit">Создать</button>
         </form>
       </div>
@@ -126,7 +130,8 @@
     </template>
 
     <script src="./scripts/cards.js"></script>
-    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
+
   </body>
 </html>
