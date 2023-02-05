@@ -1,57 +1,67 @@
 const validConfig = {
-  formElement: '.popup__form',
-  formInput: '.popup__input',
-  formError: '.popup__button',
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
   inactiveButtonClass: 'popup__button-save_disabled',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__error_visible',
 };
 
-const showInputError = (formElement, formInput, errorMessage) => { // создаем функцию которая показывает ошибку
-  const formError = formElement.querySelector(`.${formInput.id}-error`); //получаем спан в который запишем ошибку
+// Функция показа ошибки
 
-  formInput.classList.add('popup__input_type_error'); // добавляем красную линию инпуту с ошибкой
-  formError.textContent = errorMessage; // записываем браузерную ошибку в спан
-  formError.classList.add('popup__error_visible'); // делаем спан видимым
+const showInputError = (formElement, formInput, errorMessage, config) => {
+  const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+  formInput.classList.add(config.inputErrorClass);
+  formError.textContent = errorMessage;
+  formError.classList.add(config.errorClass);
 };
 
-const hideInputError = (formElement, formInput) => { // создаем функцию которая удаляет ошибку
-  const formError = formElement.querySelector(`.${formInput.id}-error`); //получаем спан в который запишем ошибку
+// Функция удаления ошибки
 
-  formInput.classList.remove('popup__input_type_error');
-  formError.classList.remove('popup__error_visible');
-  formError.textContent = ''; // очищаем спан от текста ошибки
+const hideInputError = (formElement, formInput, config) => {
+  const formError = formElement.querySelector(`.${formInput.id}-error`);
+
+  formInput.classList.remove(config.inputErrorClass);
+  formError.classList.remove(config.errorClass);
+  formError.textContent = '';
 };
 
-const isValid = (formElement, formInput) => { // функция проверки валидиции инпутов
+// Валидация формы
+
+const isValid = (formElement, formInput, config) => { // функция проверки валидиции инпутов
   if(!formInput.validity.valid) { // если инпут с ошибкой, то показываем ошибку
     //передаем в функцию показа ошибки инпут с ошибкой и текст ошибки
-    showInputError(formElement, formInput, formInput.validationMessage);
+    showInputError(formElement, formInput, formInput.validationMessage, config);
   } else {
-    hideInputError(formElement, formInput); // вызываем функцию передаем аргументы инпута с ошибкой
+    hideInputError(formElement, formInput, config); // вызываем функцию передаем аргументы инпута с ошибкой
   }
 };
 
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const formButton = formElement.querySelector('.popup__button-save');
+// Слушатель инпутов в форме
 
-  toggleButtonState(inputList, formButton);
+const setEventListeners = (formElement, config) => {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+  const formButton = formElement.querySelector(config.submitButtonSelector);
+
+  toggleButtonState(inputList, formButton, config);
 
   inputList.forEach(formInput => {
     formInput.addEventListener('input', () => {
-      isValid(formElement, formInput);
+      isValid(formElement, formInput, config);
 
-      toggleButtonState(inputList, formButton);
+      toggleButtonState(inputList, formButton, config);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+// Получение формы и проверка ее на валидность
+
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
 
   formList.forEach(formElement => {
-    setEventListeners(formElement);
+    setEventListeners(formElement, config);
   });
 };
 
@@ -61,12 +71,14 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, formButton) => {
+// Вкл\Выкл кнопки
+
+const toggleButtonState = (inputList, formButton, config) => {
   if (hasInvalidInput(inputList)) {
-    formButton.classList.add('popup__button-save_disabled');
+    formButton.classList.add(config.inactiveButtonClass);
     formButton.disabled = true;
   } else {
-    formButton.classList.remove('popup__button-save_disabled');
+    formButton.classList.remove(config.inactiveButtonClass);
     formButton.disabled = false;
   }
 };
