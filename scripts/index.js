@@ -17,7 +17,7 @@ const formElement = document.querySelector('.popup__form_edit');
 function openingForm(formOpen) {
   formOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closingFormByEscape);
-  formOpen.addEventListener('click', closingFormByViewport);
+  formOpen.addEventListener('mousedown', closingFormByViewport);
 };
 
 buttonEdit.addEventListener('click', function () {
@@ -35,6 +35,7 @@ buttonAdd.addEventListener('click', function () {
 function closingForm(formClose) {
   formClose.classList.remove('popup_opened');
   document.removeEventListener('keydown', closingFormByEscape);
+  formClose.removeEventListener('mousedown', closingFormByViewport);
 };
 
 buttonClose.forEach(function (button) {
@@ -52,9 +53,8 @@ function closingFormByEscape(evt) {
 };
 
 function closingFormByViewport (evt) {
-  const target = evt.target;
   const popup = document.querySelector('.popup_opened');
-  if(target === popup) {
+  if(evt.target == popup) {
     closingForm(popup);
   };
 };
@@ -132,6 +132,7 @@ function createCard(name, link) {
 
 function resetFormAdd() {
   document.querySelector('.popup__form_add').reset();
+  enableValidation(validConfig);
 }
 
 // Добавление карточки из массива
