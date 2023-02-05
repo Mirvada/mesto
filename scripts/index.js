@@ -154,7 +154,7 @@ function handleFormAddSubmit(evt) {
 
   cardList.prepend(createCard(nameCardInput, linkCardInput));
 
-  closeForm(evt.target);
+  closingForm(evt.target);
 };
 
 formAdd.addEventListener('submit', handleFormAddSubmit);
