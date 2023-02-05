@@ -17,6 +17,7 @@ const formElement = document.querySelector('.popup__form_edit');
 function openingForm(formOpen) {
   formOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closingFormByEscape);
+  formOpen.addEventListener('click', closingFormByViewport);
 };
 
 buttonEdit.addEventListener('click', function () {
@@ -46,6 +47,14 @@ buttonClose.forEach(function (button) {
 function closingFormByEscape(evt) {
   if (evt.key == 'Escape') {
     const popup = document.querySelector('.popup_opened');
+    closingForm(popup);
+  };
+};
+
+function closingFormByViewport (evt) {
+  const target = evt.target;
+  const popup = document.querySelector('.popup_opened');
+  if(target === popup) {
     closingForm(popup);
   };
 };
