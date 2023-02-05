@@ -16,6 +16,7 @@ const formElement = document.querySelector('.popup__form_edit');
 
 function openingForm(formOpen) {
   formOpen.classList.add('popup_opened');
+  document.addEventListener('keydown', closingFormByEscape);
 };
 
 buttonEdit.addEventListener('click', function () {
@@ -32,6 +33,7 @@ buttonAdd.addEventListener('click', function () {
 
 function closingForm(formClose) {
   formClose.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closingFormByEscape);
 };
 
 buttonClose.forEach(function (button) {
@@ -40,6 +42,13 @@ buttonClose.forEach(function (button) {
     closingForm(formClose);
   })
 })
+
+function closingFormByEscape(evt) {
+  if (evt.key == 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closingForm(popup);
+  };
+};
 
 // Сброс формы редактирования
 
