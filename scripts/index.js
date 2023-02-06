@@ -39,8 +39,8 @@ function closeForm(formClose) {
 };
 
 buttonCloseList.forEach(function (button) {
+  formClose = button.closest('.popup')
   button.addEventListener('click', function (formClose) {
-    formClose = button.closest('.popup')
     closeForm(formClose);
   })
 })
