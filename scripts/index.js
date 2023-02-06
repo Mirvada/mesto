@@ -53,9 +53,8 @@ function closingFormByEscape(evt) {
 };
 
 function closingFormByViewport (evt) {
-  const popup = document.querySelector('.popup_opened');
-  if(evt.target == popup) {
-    closeForm(popup);
+  if(evt.target == evt.target.classList.contains('popup')) {
+    closeForm(evt.target);
   };
 };
 
