@@ -2,7 +2,7 @@
 const popupEditForm = document.querySelector('.popup_edit');
 const popupAddForm = document.querySelector('.popup_add');
 const buttonEdit = document.querySelector('.profile__button-edit');
-const buttonClose = document.querySelectorAll('.popup__button-close');
+const buttonCloseList = document.querySelectorAll('.popup__button-close');
 const buttonAdd = document.querySelector('.profile__button-add');
 
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -10,52 +10,52 @@ const infoInput = document.querySelector('.popup__input_type_info');
 const nameProfile = document.querySelector('.profile__nickname');
 const infoProfile = document.querySelector('.profile__user-info');
 
-const formElement = document.querySelector('.popup__form_edit');
+const formEdit = document.querySelector('.popup__form_edit');
 
 // Открытие формы
 
-function openingForm(formOpen) {
+function openForm(formOpen) {
   formOpen.classList.add('popup_opened');
   document.addEventListener('keydown', closingFormByEscape);
   formOpen.addEventListener('mousedown', closingFormByViewport);
 };
 
 buttonEdit.addEventListener('click', function () {
-  openingForm(popupEditForm);
+  openForm(popupEditForm);
   resetFormEdit();
 });
 
 buttonAdd.addEventListener('click', function () {
-  openingForm(popupAddForm);
+  openForm(popupAddForm);
   resetFormAdd();
 });
 
 // Закрытие формы
 
-function closingForm(formClose) {
+function closeForm(formClose) {
   formClose.classList.remove('popup_opened');
   document.removeEventListener('keydown', closingFormByEscape);
   formClose.removeEventListener('mousedown', closingFormByViewport);
 };
 
-buttonClose.forEach(function (button) {
+buttonCloseList.forEach(function (button) {
   button.addEventListener('click', function (formClose) {
     formClose = button.closest('.popup')
-    closingForm(formClose);
+    closeForm(formClose);
   })
 })
 
 function closingFormByEscape(evt) {
   if (evt.key == 'Escape') {
     const popup = document.querySelector('.popup_opened');
-    closingForm(popup);
+    closeForm(popup);
   };
 };
 
 function closingFormByViewport (evt) {
   const popup = document.querySelector('.popup_opened');
   if(evt.target == popup) {
-    closingForm(popup);
+    closeForm(popup);
   };
 };
 
@@ -68,16 +68,16 @@ function resetFormEdit() {
 
 // Редактирование имени и информации
 
-function handleFormSubmit(evt) {
+function handleFormEditSubmit(evt) {
   evt.preventDefault();
 
   nameProfile.textContent = nameInput.value;
   infoProfile.textContent = infoInput.value;
 
-  closingForm(popupEditForm);
+  closeForm(popupEditForm);
 }
 
-formElement.addEventListener('submit', handleFormSubmit);
+formEdit.addEventListener('submit', handleFormEditSubmit);
 
 // Проектная работа №5
 
@@ -117,13 +117,13 @@ function createCard(name, link) {
   // // Открытие картинки
 
   cardImg.addEventListener('click', function () {
-    openingForm(popupViewerForm);
+    openForm(popupViewerForm);
     viewerTitle.textContent = name;
     viewerImg.src = link;
     viewerImg.alt = name;
   });
 
-  closingForm(popupAddForm);
+  closeForm(popupAddForm);
 
   return cardElement;
 };
@@ -155,7 +155,7 @@ function handleFormAddSubmit(evt) {
 
   cardList.prepend(createCard(nameCardInput, linkCardInput));
 
-  closingForm(evt.target);
+  closeForm(evt.target);
 };
 
 formAdd.addEventListener('submit', handleFormAddSubmit);
