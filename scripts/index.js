@@ -88,6 +88,9 @@ const popupViewerForm = document.querySelector('.popup_viewer');
 const viewerTitle = popupViewerForm.querySelector('.popup__viewer-title');
 const viewerImg = popupViewerForm.querySelector('.popup__viewer-img');
 
+const nameCardInput = document.querySelector('.popup__input_type_title');
+const linkCardInput = document.querySelector('.popup__input_type_link');
+
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
   const cardText = cardElement.querySelector('.card__text');
@@ -147,10 +150,8 @@ addArr();
 
 function handleFormAddSubmit(evt) {
   evt.preventDefault();
-  const nameCardInput = document.querySelector('.popup__input_type_title').value;
-  const linkCardInput = document.querySelector('.popup__input_type_link').value;
 
-  cardList.prepend(createCard(nameCardInput, linkCardInput));
+  cardList.prepend(createCard(nameCardInput.value, linkCardInput.value));
 
   closeForm(evt.target);
 };
