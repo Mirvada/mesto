@@ -129,8 +129,7 @@ function createCard(name, link) {
 // Сброс формы добавления
 
 function resetFormAdd() {
-  document.querySelector('.popup__form_add').reset();
-  enableValidation(validConfig);
+  formAdd.reset();
 }
 
 // Добавление карточки из массива
