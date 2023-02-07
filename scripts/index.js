@@ -39,11 +39,10 @@ function closeForm(formClose) {
 };
 
 buttonCloseList.forEach(function (button) {
-  formClose = button.closest('.popup')
-  button.addEventListener('click', function (formClose) {
-    closeForm(formClose);
-  })
-})
+  button.addEventListener('click', function() {
+    closeForm(button.closest('.popup'));
+  });
+});
 
 function closingFormByEscape(evt) {
   if (evt.key == 'Escape') {
