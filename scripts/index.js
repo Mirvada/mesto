@@ -51,8 +51,8 @@ function closingFormByEscape(evt) {
   };
 };
 
-function closingFormByViewport (evt) {
-  if(evt.target == evt.target.classList.contains('popup')) {
+function closingFormByViewport(evt) {
+  if(evt.target.classList.contains('popup')) {
     closeForm(evt.target);
   };
 };
