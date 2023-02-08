@@ -81,6 +81,12 @@ const toggleButtonState = (inputList, formButton, config) => {
     formButton.classList.remove(config.inactiveButtonClass);
     formButton.disabled = false;
   }
+
+  formAdd.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState(inputList, formButton, config);
+    }, 0);
+  });
 };
 
 enableValidation(validConfig);
