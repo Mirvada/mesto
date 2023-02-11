@@ -39,8 +39,9 @@ function closeForm(formClose) {
 };
 
 buttonCloseList.forEach(function (button) {
+  const popupActiv = button.closest('.popup');
   button.addEventListener('click', function() {
-    closeForm(button.closest('.popup'));
+    closeForm(popupActiv);
   });
 });
 
