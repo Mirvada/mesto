@@ -39,16 +39,16 @@ function closeForm(formClose) {
 };
 
 buttonCloseList.forEach(function (button) {
-  const popupActiv = button.closest('.popup');
+  const popupActive = button.closest('.popup');
   button.addEventListener('click', function() {
-    closeForm(popupActiv);
+    closeForm(popupActive);
   });
 });
 
 function closingFormByEscape(evt) {
   if (evt.key == 'Escape') {
-    const popup = document.querySelector('.popup_opened');
-    closeForm(popup);
+    const popupActive = document.querySelector('.popup_opened');
+    closeForm(popupActive);
   };
 };
 
