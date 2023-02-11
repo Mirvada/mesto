@@ -125,8 +125,6 @@ function createCard(name, link) {
     viewerImg.alt = name;
   });
 
-  closeForm(popupAddForm);
-
   return cardElement;
 };
 
