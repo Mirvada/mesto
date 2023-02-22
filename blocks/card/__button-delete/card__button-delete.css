@@ -1,4 +1,4 @@
-.card__button-trash {
+.card__button-delete {
   padding: 0;
   width: 18px;
   height: 19px;
@@ -13,6 +13,6 @@
   cursor: pointer;
 }
 
-.card__button-trash:hover {
+.card__button-delete:hover {
   opacity: 0.6;
 }
