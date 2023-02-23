@@ -31,7 +31,33 @@ export class Card {
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._openPopup = openPopup;
-  }
+  };
+
+  _handleOpenPopup() {
+    this._openPopup(this._name, this._link);
+  };
+
+  _setLikeButtonState(evt) {
+    evt.target.classList.toggle('card__button-like_active');
+  };
+
+  _removeCard() {
+      this._element.remove();
+  };
+
+  _setEventListeners() {
+    this._cardImg.addEventListener('click', () => {
+      this._handleOpenPopup();
+    });
+
+    this._buttonLike.addEventListener('click', (evt) => {
+      this._setLikeButtonState(evt);
+    });
+
+    this._buttonDelete.addEventListener('click', () => {
+      this._removeCard();
+    });
+  };
 
   _getTemplate() {
     const cardElement = document
@@ -41,7 +67,7 @@ export class Card {
     .cloneNode(true);
 
     return cardElement;
-  }
+  };
 
   generateCard() {
     this._element = this._getTemplate();
@@ -58,33 +84,5 @@ export class Card {
     this._setEventListeners();
 
     return this._element;
-  }
-
-  _handleOpenPopup() {
-    this._openPopup(this._name, this._link);
-  }
-
-
-  _setEventListeners() {
-
-    this._cardImg.addEventListener('click', () => {
-      this._handleOpenPopup();
-    });
-
-    this._buttonLike.addEventListener('click', (evt) => {
-      this._setLikeButtonState(evt);
-    });
-
-    this._buttonDelete.addEventListener('click', () => {
-      this._removeCard();
-    });
-  }
-
-  _setLikeButtonState(evt) {
-    evt.target.classList.toggle('card__button-like_active');
-  }
-
-  _removeCard() {
-      this._element.remove();
-  }
-}
+  };
+};
