@@ -1,4 +1,5 @@
 import {initialCards, Card} from "./cards.js";
+import {validConfig, FormValidator} from "./validate.js";
 
 const popupEditForm = document.querySelector('.popup_edit');
 const buttonCloseList = document.querySelectorAll('.popup__button-close');
@@ -25,7 +26,6 @@ const viewerImg = popupViewer.querySelector('.popup__viewer-img');
 
 
 // Открытие popup
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closingFormByEscape);
@@ -40,18 +40,7 @@ function openPopupViewer (name, link) {
   openPopup(popupViewer);
 }
 
-buttonEdit.addEventListener('click', function () {
-  openPopup(popupEditForm);
-  resetFormEdit();
-});
-
-buttonAdd.addEventListener('click', function () {
-  openPopup(popupAddForm);
-  resetFormAdd();
-});
-
 // Закрытие popup
-
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closingFormByEscape);
@@ -79,17 +68,13 @@ buttonCloseList.forEach(function (button) {
   });
 });
 
-
-
 // Сброс формы редактирования
-
 function resetFormEdit() {
   nameInput.value = nameProfile.textContent;
   infoInput.value = infoProfile.textContent;
 }
 
 // Редактирование имени и информации
-
 function handleFormEditSubmit(evt) {
   evt.preventDefault();
 
@@ -99,18 +84,12 @@ function handleFormEditSubmit(evt) {
   closePopup(popupEditForm);
 }
 
-formEdit.addEventListener('submit', handleFormEditSubmit);
-
-
 // Сброс формы добавления
-
 function resetFormAdd() {
   formAdd.reset();
 }
 
-
 // Функция создания экземпляра карточки
-
 function createCard(item) {
   const card = new Card(item, '#card-template', openPopupViewer);
   const cardElement = card.generateCard();
@@ -118,8 +97,14 @@ function createCard(item) {
   return cardElement;
 }
 
-// Добавление карточек из формы
+// Функция добавления карточек из массива
+function addCardFromArray(item) {
+  item.forEach(function (card) {
+    cardList.append(createCard(card));
+  });
+}
 
+// Добавление карточек из формы
 function handleFormAddSubmit(evt) {
   evt.preventDefault();
 
@@ -128,14 +113,34 @@ function handleFormAddSubmit(evt) {
   closePopup(popupAddForm);
 };
 
+formEdit.addEventListener('submit', handleFormEditSubmit);
 formAdd.addEventListener('submit', handleFormAddSubmit);
 
-// Добавление карточек из массива
+buttonEdit.addEventListener('click', function () {
+  openPopup(popupEditForm);
+  resetFormEdit();
+  formEditValidation.resetValidation();
 
-function addCardFromArray(item) {
-  item.forEach(function (card) {
-    cardList.append(createCard(card));
+});
+
+buttonAdd.addEventListener('click', function () {
+  resetFormAdd();
+  formAddValidation.resetValidation();
+  openPopup(popupAddForm);
+});
+
+buttonCloseList.forEach(function (button) {
+  const popupActive = button.closest('.popup');
+  button.addEventListener('click', function() {
+    closePopup(popupActive);
   });
-}
+});
 
+// Вызов валидации
+const formAddValidation = new FormValidator(validConfig, formAdd);
+formAddValidation.enableValidation();
+const formEditValidation = new FormValidator(validConfig, formEdit);
+formEditValidation.enableValidation();
+
+// Вызов функции с массивом карточек
 addCardFromArray(initialCards);
