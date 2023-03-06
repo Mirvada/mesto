@@ -49,7 +49,7 @@ const popupFormEdit = new PopupWithForm('.popup_edit', {
 
 const popupFormAdd = new PopupWithForm('.popup_add', {
   handleFormSubmit: (formData) => {
-    cardList.prepend(createCard({ name: formData.title, link: formData.link }));
+    renderCards.prependItem(createCard({ name: formData.title, link: formData.link }));
   }
 })
 
