@@ -1,40 +1,14 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-export class Card {
-  constructor(data, templateSelector, openPopup) {
+export default class Card {
+  constructor(data, templateSelector, openPopup, { handleCardClick }) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
   };
 
   _handleOpenPopup() {
-    this._openPopup(this._name, this._link);
+    this._handleCardClick(this._name, this._link);
   };
 
   _setLikeButtonState(evt) {
@@ -42,7 +16,7 @@ export class Card {
   };
 
   _removeCard() {
-      this._element.remove();
+    this._element.remove();
   };
 
   _setEventListeners() {
@@ -61,10 +35,10 @@ export class Card {
 
   _getTemplate() {
     const cardElement = document
-    .querySelector(this._templateSelector)
-    .content
-    .querySelector('.card')
-    .cloneNode(true);
+      .querySelector(this._templateSelector)
+      .content
+      .querySelector('.card')
+      .cloneNode(true);
 
     return cardElement;
   };
