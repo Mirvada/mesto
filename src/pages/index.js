@@ -3,9 +3,6 @@ import {
   initialCards,
   validConfig,
   cardList,
-  popupEdit,
-  popupAdd,
-  popupViewer,
   user,
   buttonEdit,
   buttonAdd,
@@ -28,10 +25,10 @@ const renderCards = new Section({
   }
 }, cardList);
 
-const imagePopup = new PopupWithImage(popupViewer);
+const imagePopup = new PopupWithImage('.popup_viewer');
 
 const createCard = (item) => {
-  const card = new Card(item, '#card-template', popupViewer, {
+  const card = new Card(item, '#card-template', '.popup_viewer', {
     handleCardClick: (name, link) => {
       imagePopup.open(name, link);
     }
@@ -44,13 +41,13 @@ const createCard = (item) => {
 
 const userInfo = new UserInfo({ user });
 
-const popupFormEdit = new PopupWithForm(popupEdit, {
+const popupFormEdit = new PopupWithForm('.popup_edit', {
   handleFormSubmit: (formData) => {
     userInfo.setUserInfo(formData);
   }
 });
 
-const popupFormAdd = new PopupWithForm(popupAdd, {
+const popupFormAdd = new PopupWithForm('.popup_add', {
   handleFormSubmit: (formData) => {
     cardList.prepend(createCard({ name: formData.title, link: formData.link }));
   }

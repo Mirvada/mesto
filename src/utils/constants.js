@@ -43,10 +43,6 @@ export const user = {
 
 export const cardList = document.querySelector('.cards');
 
-export const popupEdit = document.querySelector('.popup_edit');
-export const popupAdd = document.querySelector('.popup_add');
-export const popupViewer = document.querySelector('.popup_viewer');
-
 export const buttonEdit = document.querySelector('.profile__button-edit');
 export const buttonAdd = document.querySelector('.profile__button-add');
 
