@@ -17,9 +17,25 @@ import PopupWithImage from "../components/PopupWithImage.js"
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Cards.js";
+import Api from "../components/Api.js"
+
+const api = new Api()
+
+api.getUserInfo()
+  .then(res => {
+    userInfo.setUserInfo({
+      name: res.name,
+      info: res.about
+    })
+  })
+
+const apiCard = api.getCards()
+  .then(cards => {
+    renderCards.renderer(cards);
+  })
+
 
 const renderCards = new Section({
-  items: initialCards,
   renderer: (item) => {
     renderCards.addItem(createCard(item));
   }
@@ -44,12 +60,20 @@ const userInfo = new UserInfo({ user });
 const popupFormEdit = new PopupWithForm('.popup_edit', {
   handleFormSubmit: (formData) => {
     userInfo.setUserInfo(formData);
+    api.sendEditedUserData({
+      name: formData.name,
+      about: formData.info
+    });
   }
 });
 
 const popupFormAdd = new PopupWithForm('.popup_add', {
   handleFormSubmit: (formData) => {
     renderCards.prependItem(createCard({ name: formData.title, link: formData.link }));
+    api.addCard({
+      name: formData.title,
+      link: formData.link
+    });
   }
 })
 
@@ -77,6 +101,3 @@ const formAddValidation = new FormValidator(validConfig, formAdd);
 formAddValidation.enableValidation();
 const formEditValidation = new FormValidator(validConfig, formEdit);
 formEditValidation.enableValidation();
-
-// Вызов функции с массивом карточек
-renderCards.renderer();
