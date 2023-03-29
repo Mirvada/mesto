@@ -4,6 +4,11 @@ export default class UserInfo {
     this._aboutInput = document.querySelector(user.aboutInput);
     this._nameProfile = document.querySelector(user.name);
     this._aboutProfile = document.querySelector(user.about);
+    this._userAvatar = document.querySelector(user.avatar)
+  }
+
+  updateUserAvatar(link) {
+    this._userAvatar.src = link;
   }
 
   getUserInfo() {
