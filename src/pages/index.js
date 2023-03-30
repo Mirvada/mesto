@@ -1,6 +1,7 @@
 import "../pages/index.css"
 import {
   validConfig,
+  apiConfig,
   cardList,
   user,
   buttonEdit,
@@ -21,13 +22,13 @@ import UserInfo from "../components/UserInfo.js";
 import Card from "../components/Cards.js";
 import Api from "../components/Api.js"
 
-const api = new Api()
+const api = new Api(apiConfig)
 
 let userId;
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardList]) => {
-    userInfo.setUserInfo({ name: userData.name, info: userData.about })
+    userInfo.setUserInfo({ name: userData.name, about: userData.about })
     userInfo.updateUserAvatar(userData.avatar)
     userId = userData._id;
 
@@ -85,11 +86,11 @@ const userInfo = new UserInfo({ user });
 const popupFormEdit = new PopupWithForm('.popup_edit', {
   handleFormSubmit: (formData) => {
     popupFormEdit.renderLoading('Сохранение...');
-    userInfo.setUserInfo(formData);
-    api.sendEditedUserData({
-      name: formData.name,
-      about: formData.info
-    })
+    api.sendEditedUserData(formData)
+      .then(res => {
+        userInfo.setUserInfo(res);
+        popupFormEdit.close();
+      })
       .catch(err => console.log(`ошибка: ${err}`))
       .finally(() => {
         popupFormEdit.renderLoading('Сохранить');
