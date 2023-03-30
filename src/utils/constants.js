@@ -15,6 +15,7 @@ export const user = {
   avatar: '.profile__avatar'
 }
 
+<<<<<<< HEAD
 // export const apiConfig = {
 //   link: 'https://mesto.nomoreparties.co/v1/cohort-62/',
 //   headers: {
@@ -22,6 +23,15 @@ export const user = {
 //     contentType: 'application/json'
 //   }
 // }
+=======
+export const apiConfig = {
+  link: 'https://mesto.nomoreparties.co/v1/cohort-62',
+  headers: {
+    authorization: 'ddab6b6e-12d5-4645-a33d-6f5a3092be71',
+    'Content-Type': 'application/json'
+  }
+}
+>>>>>>> 3ef1180f9c0605d9c560a67585604fd03ab455d6
 
 export const cardList = document.querySelector('.cards');
 
