@@ -107,6 +107,7 @@ const popupFormAdd = new PopupWithForm('.popup_add', {
     })
       .then(res => {
         renderCards.prependItem(createCard(res));
+        popupFormAdd.close();
       })
       .catch(err => console.log(`ошибка: ${err}`))
       .finally(() => {
