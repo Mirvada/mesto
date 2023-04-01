@@ -19,7 +19,7 @@ export default class Popup {
 
   renderLoading(text) {
     if (this._submitButton) {
-      his._submitButton.textContent = text;
+      this._submitButton.textContent = text;
     }
   }
 
