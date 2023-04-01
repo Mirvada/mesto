@@ -18,7 +18,9 @@ export default class Popup {
   }
 
   renderLoading(text) {
-    this._submitButton.textContent = text;
+    if (this._submitButton) {
+      his._submitButton.textContent = text;
+    }
   }
 
   setEventListeners() {
