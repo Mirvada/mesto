@@ -83,7 +83,7 @@ export default class Card {
 
     this._cardTitle.textContent = this._name;
     this._cardImg.src = this._link;
-    this._cardImg.textContent = this._name;
+    this._cardImg.alt = this._name;
 
     this.countCardLike(this._dataCard);
     this._setEventListeners();
