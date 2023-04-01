@@ -126,7 +126,8 @@ const popupFormAvatar = new PopupWithForm('.popup_add-avatar', {
         avatar: formData.avatar
       })
         .then(res => {
-          userInfo.updateUserAvatar(res.avatar)
+          userInfo.updateUserAvatar(res.avatar);
+          popupFormAvatar.close();
         })
         .catch(err => console.log(`ошибка: ${err}`))
         .finally(() => {
