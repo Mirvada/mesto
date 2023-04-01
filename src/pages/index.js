@@ -53,6 +53,9 @@ const popupDeletionRequest = new PopupWithConfirmation('.popup_deletion-request'
         popupDeletionRequest.close()
       })
       .catch(err => console.log(`ошибка: ${err}`))
+      .finally(() => {
+        popupDeletionRequest.renderLoading('Удалить')
+      })
   }
 });
 
