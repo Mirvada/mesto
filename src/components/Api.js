@@ -3,12 +3,21 @@ export default class Api {
     this._headers = apiConfig.headers;
     this._link = apiConfig.link;
   }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Ошибка: ${res.status}`);
+  }
+
   //1. Загрузка информации о пользователе с сервера - ГОТОВО
   getUserInfo() {
     return fetch(`${this._link}/users/me`, {
       headers: this._headers,
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
 
   //3. Редактирование профиля -ГОТОВО
@@ -21,7 +30,7 @@ export default class Api {
         about: data.info
       })
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
 
   //9. Обновление аватара пользователя
@@ -31,7 +40,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({ avatar })
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
 
   //2. Загрузка карточек с сервера - ГОТОВО
@@ -39,7 +48,7 @@ export default class Api {
     return fetch(`${this._link}/cards`, {
       headers: this._headers,
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
   //4. Добавление новой карточки - ГОТОВО
   addCard(card) {
@@ -51,14 +60,14 @@ export default class Api {
         link: card.link
       })
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
   //5. Отображение количества лайков карточки
   getLikes() {
     return fetch(`${this._link}/cards`, {
       headers: this._headers,
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
   // Поставить лайк -ГОТОВО
   putLike(cardId) {
@@ -66,7 +75,7 @@ export default class Api {
       method: "PUT",
       headers: this._headers,
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
   // Удалить лайк карточки -ГОТОВО
   deleteLike(cardId) {
@@ -74,7 +83,7 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     })
-      .then(res => this._responseProcessing(res))
+      .then(res => this._checkResponse(res))
   }
   //6. Попап удаления карточки
   deleteCard(cardId) {
@@ -82,14 +91,6 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then(res => this._responseProcessing(res))
-  }
-
-  _responseProcessing(res) {
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Ошибка: ${res.status}`);
+      .then(res => this._checkResponse(res))
   }
 }
